@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memori</title>
+    <style>
+        body {
+            font-family: 'Helvetica', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: linear-gradient(to right, #333, #555);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+        .gallery-container {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gallery-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .gallery-item {
+            width: calc(33.333% - 20px);
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .gallery-item p {
+            text-align: center;
+            padding: 15px;
+            margin: 0;
+            background-color: #333;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        /* Hover Effects */
+        footer p:hover {
+            color: #f0f0f0;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .gallery-item {
+                width: calc(50% - 20px);
+            }
+        }
+        @media (max-width: 500px) {
+            .gallery-item {
+                width: calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Memoriezzz Aw Aw<h1>
+    </header>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .gallery-container {
+            margin-top: 50px;
+        }
+        img {
+            width: 500px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        button:disabled {
+            background-color: #999;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gallery-container">
+        <img id="gallery-image" src="https://i.imgur.com/AsZiMtA.jpeg?text=Image+1" alt="Gallery Image">
+    </div>
+
+    <div class="controls">
+        <button id="prevBtn" onclick="prevImage()">Previous</button>
+        <button id="nextBtn" onclick="nextImage()">Next</button>
+    </div>
+
+    <script>
+        // Array of image URLs
+        const images = [
+            'https://i.imgur.com/AsZiMtA.jpeg?text=Image+1',
+            'https://i.imgur.com/QaFfe6E.jpeg?text=Image+2',
+            'https://i.imgur.com/Z81TK5X.jpeg?text=Image+3',
+        ];
+
+        let currentIndex = 0; // Track the current image index
+
+        // Function to show the next image
+        function nextImage() {
+            if (currentIndex < images.length - 1) {
+                currentIndex++;
+                updateImage();
+            }
+        }
+
+        // Function to show the previous image
+        function prevImage() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateImage();
+            }
+        }
+
+        // Function to update the displayed image
+        function updateImage() {
+            document.getElementById('gallery-image').src = images[currentIndex];
+            // Disable or enable buttons based on the index
+            document.getElementById('prevBtn').disabled = currentIndex === 0;
+            document.getElementById('nextBtn').disabled = currentIndex === images.length - 1;
+        }
+
+        // Initialize gallery on page load
+        updateImage();
+    </script>
+    <footer>
+        <p>&copy; 2024 Stylish Gallery | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>
